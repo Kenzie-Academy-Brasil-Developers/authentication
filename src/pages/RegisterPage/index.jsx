@@ -3,13 +3,12 @@ import { Header } from "../../components/Header";
 import { useUserContext } from "../../providers/UserContext";
 
 export const RegisterPage = () => {
-   const { register, handleSubmit, reset } = useForm();
+   const { register, handleSubmit } = useForm();
 
    const { userRegister } = useUserContext();
 
    const submit = async (formData) => {
-      await userRegister();    
-      reset();
+      userRegister(formData);    
    };
 
    return (

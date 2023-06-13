@@ -2,11 +2,10 @@ import { useForm } from "react-hook-form";
 import { Header } from "../../components/Header";
 
 export const LoginPage = () => {
-   const { register, handleSubmit, reset } = useForm();
+   const { register, handleSubmit } = useForm();
 
    const submit = async (formData) => {
       console.log(formData);
-      reset();
    };
 
    return (
