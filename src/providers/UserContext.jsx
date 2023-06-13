@@ -5,7 +5,7 @@ import { api } from "../services/api";
 export const UserContext = createContext({});
 
 export const UserProvider = ({children}) => {
-    cosnt [user, setUser] = useState({})
+    const [user, setUser] = useState({})
 
     const navigate = useNavigate();
 
