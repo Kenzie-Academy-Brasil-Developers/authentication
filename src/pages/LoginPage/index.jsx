@@ -22,6 +22,7 @@ export const LoginPage = () => {
                   Senha
                   <input type="text" {...register("password")} />
                </label>
+               <button type="submit">Login</button>
             </form>
          </main>
       </>
