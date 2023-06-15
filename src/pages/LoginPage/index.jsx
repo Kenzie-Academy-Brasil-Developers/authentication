@@ -1,11 +1,14 @@
 import { useForm } from "react-hook-form";
 import { Header } from "../../components/Header";
+import { useUserContext } from "../../providers/UserContext";
 
 export const LoginPage = () => {
+   const { userLogin } = useUserContext();
+
    const { register, handleSubmit } = useForm();
 
    const submit = async (formData) => {
-      console.log(formData);
+      userLogin(formData);
    };
 
    return (

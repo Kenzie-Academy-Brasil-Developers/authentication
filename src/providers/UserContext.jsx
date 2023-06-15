@@ -5,7 +5,7 @@ import { api } from "../services/api";
 export const UserContext = createContext({});
 
 export const UserProvider = ({children}) => {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(null);
 
     const navigate = useNavigate();
 
@@ -20,11 +20,22 @@ export const UserProvider = ({children}) => {
     }
 
     const userLogin = async (formData) => {
-  
+        try {
+            const { data } = await api.post('/login', formData);
+            localStorage.setItem("@TOKEN", data.accessToken);
+            localStorage.setItem("@USERID", data.user.id);
+            setUser(data.user);
+            navigate("/dashboard");
+        } catch {
+            console.log(error);
+        }
     }
 
     const userLogout = () => {
-
+        localStorage.removeItem("@TOKEN");
+        localStorage.removeItem("@USERID");
+        setUser(null);
+        navigate("/");
     }  
 
     return(
